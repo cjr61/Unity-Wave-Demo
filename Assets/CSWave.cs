@@ -6,11 +6,15 @@ using UnityEngine;
 public class CSWave : MonoBehaviour {
 
     public GameObject diver;
-    float waveHeight = 2.0f; 
-    float waveSpeed = 5.0f; 
-    float waveFrequency = 1.0f;
-    float waterHeight = 0f;
-    int accuracy = 20;
+    public float amplitude=1;
+    public float wavelength=1;
+    public float velocity=1;
+    public float rateOfDecay=.5f;
+
+    Vector3 entryPoint;
+    bool showWave = false;
+    float impactTime;
+    float t;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +22,8 @@ public class CSWave : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        UpdateWave();
+        if (showWave)
+            UpdateWave();
 	}
 
     void UpdateWave()
@@ -26,14 +31,14 @@ public class CSWave : MonoBehaviour {
         Mesh mesh = this.GetComponent<MeshFilter>().mesh;
         Vector3[] verts = mesh.vertices;
 
-
-        float offset;
-
-
         for (var v = 0; v < verts.Length; v++) {
-            //verts[v].y = Random.Range(0,10);
-           //double r = Math.Sqrt()
-           //verts.[v].y = Math.E-
+            float r = Mathf.Sqrt(Mathf.Pow(verts[v].x - entryPoint.x, 2) + Mathf.Pow(verts[v].z - entryPoint.z, 2));
+            float currentTime = Time.time;
+            t = currentTime - impactTime;
+
+            float height = amplitude * Mathf.Exp((r * -1) - rateOfDecay * t) * Mathf.Cos(2 * Mathf.PI * (r - velocity * t) / wavelength);
+
+            verts[v].y = height;
         }
         mesh.vertices = verts;
         mesh.RecalculateBounds();
@@ -42,10 +47,9 @@ public class CSWave : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Vector3 entryPoint = diver.transform.position;
-        float x0 = entryPoint.x;
-        float y0 = entryPoint.y;
-        float z0 = entryPoint.z;
+        impactTime = Time.time;
+        entryPoint = diver.transform.position;
+        showWave = true;
     }
 }
 
