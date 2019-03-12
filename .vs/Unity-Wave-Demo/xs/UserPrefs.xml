@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{40042E72-2754-0DBA-76E9-DBFDB948A462}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CSWave.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Reset.cs">
     <Files>
-      <File FileName="Assets/CSWave.cs" Line="20" Column="1" />
+      <File FileName="Assets/CSWave.cs" Line="53" Column="100" />
+      <File FileName="Assets/Reset.cs" Line="8" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
