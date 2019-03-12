@@ -29,17 +29,12 @@ public class CSWave : MonoBehaviour {
 
         float offset;
 
-        for (int i = 0; i < accuracy; i++)
-        {
-            offset = waveHeight * Mathf.Cos((Time.time * waveSpeed) + (i * waveFrequency));
 
-            verts[i].y = waterHeight + offset;
+        for (var v = 0; v < verts.Length; v++) {
+            //verts[v].y = Random.Range(0,10);
+           //double r = Math.Sqrt()
+           //verts.[v].y = Math.E-
         }
-        //for (var v = 0; v < verts.Length; v++) {
-        ////verts[v].y = Random.Range(0,10);
-        //    //double r = Math.Sqrt()
-        //    //verts.[v].y = Math.E-
-        //}
         mesh.vertices = verts;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
