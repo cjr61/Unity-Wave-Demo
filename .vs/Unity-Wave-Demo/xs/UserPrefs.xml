@@ -1,4 +1,4 @@
-﻿<Properties>
+﻿<Properties StartupConfiguration="{40042E72-2754-0DBA-76E9-DBFDB948A462}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CSWave.cs">
     <Files>
       <File FileName="Assets/CSWave.cs" Line="20" Column="1" />
@@ -6,6 +6,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -12,9 +12,11 @@ public class CSWave : MonoBehaviour {
     public float rateOfDecay=.5f;
 
     Vector3 entryPoint;
+    Vector3 localVec;
     bool showWave = false;
     float impactTime;
     float t;
+    int divesDone;
 
 	// Use this for initialization
 	void Start () {
@@ -31,8 +33,9 @@ public class CSWave : MonoBehaviour {
         Mesh mesh = this.GetComponent<MeshFilter>().mesh;
         Vector3[] verts = mesh.vertices;
 
-        for (var v = 0; v < verts.Length; v++) {
-            float r = Mathf.Sqrt(Mathf.Pow(verts[v].x - entryPoint.x, 2) + Mathf.Pow(verts[v].z - entryPoint.z, 2));
+        for (var v = 0; v < verts.Length; v++)
+        {
+            float r = Mathf.Sqrt(Mathf.Pow(verts[v].x - localVec.x, 2) + Mathf.Pow(verts[v].z - localVec.z, 2));
             float currentTime = Time.time;
             t = currentTime - impactTime;
 
@@ -44,13 +47,20 @@ public class CSWave : MonoBehaviour {
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnCollisionEnter(Collision col)
     {
+        Physics.IgnoreCollision(diver.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+
+        ContactPoint p = col.contacts[0];
+        localVec = transform.InverseTransformPoint(p.point);
         impactTime = Time.time;
-        entryPoint = diver.transform.position;
+        Debug.Log("hit water");
+        entryPoint = col.transform.position;
         showWave = true;
-    }
+        divesDone++;
+    }   
+     
 }
 
 
