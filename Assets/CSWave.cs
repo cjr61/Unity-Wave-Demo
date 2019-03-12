@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CSWave : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class CSWave : MonoBehaviour {
     public float wavelength=1;
     public float velocity=1;
     public float rateOfDecay=.5f;
+    public Text countText;
 
     Vector3 entryPoint;
     Vector3 localVec;
@@ -20,6 +22,7 @@ public class CSWave : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        SetCountText();
 	}
 
 	// Update is called once per frame
@@ -59,8 +62,14 @@ public class CSWave : MonoBehaviour {
         entryPoint = col.transform.position;
         showWave = true;
         divesDone++;
-    }   
-     
+        SetCountText();
+    }
+
+    void SetCountText()
+    {
+        countText.text = "Dives Completed: " + divesDone.ToString();
+
+    }
 }
 
 
