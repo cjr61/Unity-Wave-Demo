@@ -1,6 +1,6 @@
 Win
 PlayerPath?
-D:/Homework/CS-Wave.exe
+D:/Homework/Unity-Wave-Demo/build/CS-Wave.exe
 SceneListBegin?
 CS-Wave.unity
 SceneListEnd?

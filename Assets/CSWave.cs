@@ -58,7 +58,6 @@ public class CSWave : MonoBehaviour {
         ContactPoint p = col.contacts[0];
         localVec = transform.InverseTransformPoint(p.point);
         impactTime = Time.time;
-        Debug.Log("hit water");
         entryPoint = col.transform.position;
         showWave = true;
         divesDone++;
@@ -68,6 +67,7 @@ public class CSWave : MonoBehaviour {
     void SetCountText()
     {
         countText.text = "Dives Completed: " + divesDone.ToString();
+        Debug.Log(countText.text);
 
     }
 }
